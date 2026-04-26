@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LuxeClean Detailing — Lavage Intérieur à Domicile</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #0a0a0a;
+  --dark: #141414;
+  --card: #1a1a1a;
+  --gold: #c9a84c;
+  --gold-light: #e4cc7a;
+  --white: #f5f0e8;
+  --gray: #888;
+  --gray-light: #bbb;
+  --accent-essential: #4a90a4;
+  --accent-premium: var(--gold);
+  --accent-prestige: #a855f7;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--black);
+  color: var(--white);
+  overflow-x: hidden;
+}
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  padding: 1.2rem 3rem;
+  display: flex; justify-content: space-between; align-items: center;
+  z-index: 100;
+  background: rgba(10,10,10,0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(201,168,76,0.1);
+}
+.logo { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; letter-spacing: 2px; color: var(--gold); }
+.logo span { color: var(--white); font-weight: 400; }
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a { color: var(--gray-light); text-decoration: none; font-size: 0.85rem; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.3s; }
+.nav-links a:hover { color: var(--gold); }
+.nav-cta { background: var(--gold) !important; color: var(--black) !important; padding: 0.6rem 1.5rem; border-radius: 4px; font-weight: 600 !important; }
+
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  text-align: center;
+  padding: 6rem 2rem 4rem;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(201,168,76,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 20% 80%, rgba(74,144,164,0.05) 0%, transparent 50%),
+    var(--black);
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.5rem 1.2rem;
+  border: 1px solid rgba(201,168,76,0.3); border-radius: 50px;
+  font-size: 0.75rem; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 2.5rem; animation: fadeDown 1s ease;
+}
+.hero-badge::before {
+  content: ''; width: 6px; height: 6px;
+  background: var(--gold); border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.5)} }
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-weight: 700; line-height: 1.1;
+  margin-bottom: 1.5rem;
+  animation: fadeUp 1s ease 0.2s both;
+}
+.hero h1 em { font-style: italic; color: var(--gold); }
+.hero p { font-size: 1.15rem; color: var(--gray); max-width: 560px; line-height: 1.7; margin-bottom: 2.5rem; animation: fadeUp 1s ease 0.4s both; }
+.hero-buttons { display: flex; gap: 1rem; animation: fadeUp 1s ease 0.6s both; }
+.btn-primary { padding: 1rem 2.5rem; background: var(--gold); color: var(--black); border: none; border-radius: 4px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; transition: all 0.3s; text-decoration: none; display: inline-block; }
+.btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(201,168,76,0.25); }
+.btn-secondary { padding: 1rem 2.5rem; background: transparent; color: var(--white); border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; transition: all 0.3s; text-decoration: none; }
+.btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+.stats-bar { display: flex; justify-content: center; gap: 4rem; padding: 3rem 2rem; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(20,20,20,0.5); }
+.stat { text-align: center; }
+.stat-number { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; color: var(--gold); }
+.stat-label { font-size: 0.8rem; color: var(--gray); text-transform: uppercase; letter-spacing: 1.5px; margin-top: 0.3rem; }
+
+section { padding: 6rem 2rem; }
+.section-header { text-align: center; margin-bottom: 4rem; }
+.section-tag { font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; display: block; }
+.section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; margin-bottom: 1rem; }
+.section-subtitle { color: var(--gray); font-size: 1.05rem; max-width: 580px; margin: 0 auto; line-height: 1.7; }
+
+#formules {
+  background:
+    radial-gradient(ellipse 50% 30% at 80% 20%, rgba(168,85,247,0.05) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 30% at 20% 80%, rgba(201,168,76,0.05) 0%, transparent 50%),
+    var(--black);
+}
+.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; max-width: 1100px; margin: 0 auto; align-items: start; }
+.pricing-card { background: var(--card); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 2.5rem 2rem; position: relative; transition: all 0.4s cubic-bezier(0.4,0,0.2,1); overflow: hidden; }
+.pricing-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--card-accent); opacity: 0.7; transition: opacity 0.3s; }
+.pricing-card:hover { transform: translateY(-8px); border-color: rgba(255,255,255,0.12); box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+.pricing-card:hover::before { opacity: 1; }
+.pricing-card.featured { border-color: rgba(201,168,76,0.3); background: linear-gradient(170deg, rgba(201,168,76,0.08), var(--card) 40%); transform: scale(1.04); }
+.pricing-card.featured:hover { transform: scale(1.04) translateY(-8px); }
+.card-badge { position: absolute; top: 1.2rem; right: 1.2rem; padding: 0.3rem 0.8rem; background: var(--gold); color: var(--black); font-size: 0.65rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; border-radius: 3px; }
+.card-icon { width: 48px; height: 48px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 1.5rem; }
+.card-name { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+.card-desc { font-size: 0.85rem; color: var(--gray); line-height: 1.6; margin-bottom: 1.5rem; }
+.card-price { display: flex; align-items: baseline; gap: 0.3rem; margin-bottom: 0.3rem; }
+.card-price .amount { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 700; }
+.card-price .currency { font-size: 1.2rem; color: var(--gray); }
+.card-price-note { font-size: 0.78rem; color: var(--gray); margin-bottom: 2rem; }
+.card-features { list-style: none; margin-bottom: 2rem; }
+.card-features li { padding: 0.55rem 0; font-size: 0.88rem; color: var(--gray-light); display: flex; align-items: flex-start; gap: 0.7rem; border-bottom: 1px solid rgba(255,255,255,0.04); }
+.card-features li:last-child { border: none; }
+.card-features .check { color: var(--gold); font-size: 0.8rem; margin-top: 2px; flex-shrink: 0; }
+.card-btn { width: 100%; padding: 0.9rem; border-radius: 6px; border: none; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; transition: all 0.3s; }
+.card-btn.primary { background: var(--gold); color: var(--black); }
+.card-btn.primary:hover { background: var(--gold-light); box-shadow: 0 8px 25px rgba(201,168,76,0.3); }
+.card-btn.outline { background: transparent; color: var(--white); border: 1px solid rgba(255,255,255,0.15); }
+.card-btn.outline:hover { border-color: var(--gold); color: var(--gold); }
+.pricing-card:nth-child(1) { --card-accent: var(--accent-essential); }
+.pricing-card:nth-child(2) { --card-accent: var(--accent-premium); }
+.pricing-card:nth-child(3) { --card-accent: var(--accent-prestige); }
+.pricing-card:nth-child(1) .card-icon { background: rgba(74,144,164,0.12); color: var(--accent-essential); }
+.pricing-card:nth-child(2) .card-icon { background: rgba(201,168,76,0.12); color: var(--accent-premium); }
+.pricing-card:nth-child(3) .card-icon { background: rgba(168,85,247,0.12); color: var(--accent-prestige); }
+
+.domicile-section { background: var(--dark); border-top: 1px solid rgba(201,168,76,0.08); border-bottom: 1px solid rgba(201,168,76,0.08); }
+.domicile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; max-width: 1000px; margin: 0 auto; align-items: center; }
+.domicile-visual { background: linear-gradient(135deg, rgba(201,168,76,0.06), rgba(168,85,247,0.04)); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 3rem 2rem; text-align: center; position: relative; overflow: hidden; }
+.domicile-visual::after { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at 30% 40%, rgba(201,168,76,0.05), transparent 50%); animation: floatGlow 8s ease-in-out infinite; }
+@keyframes floatGlow { 0%,100%{transform:translate(0,0)} 50%{transform:translate(5%,3%)} }
+.domicile-icon { font-size: 4rem; margin-bottom: 1rem; position: relative; z-index: 1; }
+.domicile-visual-text { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--gold); position: relative; z-index: 1; }
+.domicile-content h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 1rem; }
+.domicile-content p { color: var(--gray); line-height: 1.8; margin-bottom: 1.5rem; font-size: 0.95rem; }
+.domicile-perks { list-style: none; }
+.domicile-perks li { padding: 0.5rem 0; font-size: 0.9rem; color: var(--gray-light); display: flex; align-items: center; gap: 0.6rem; }
+.domicile-perks .dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
+
+#process { background: var(--black); }
+.process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1000px; margin: 0 auto; }
+.process-step { text-align: center; padding: 2rem 1.5rem; }
+.step-number { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-weight: 700; color: rgba(201,168,76,0.12); margin-bottom: 0.5rem; }
+.step-title { font-weight: 600; font-size: 1.05rem; margin-bottom: 0.7rem; }
+.step-desc { font-size: 0.85rem; color: var(--gray); line-height: 1.6; }
+
+#avantages { background: var(--dark); }
+.advantages-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; max-width: 1000px; margin: 0 auto; }
+.advantage-card { padding: 2rem; border: 1px solid rgba(255,255,255,0.05); border-radius: 10px; transition: all 0.3s; }
+.advantage-card:hover { background: var(--card); border-color: rgba(201,168,76,0.15); }
+.advantage-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+.advantage-title { font-weight: 600; margin-bottom: 0.5rem; }
+.advantage-desc { font-size: 0.85rem; color: var(--gray); line-height: 1.6; }
+
+#contact { background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(201,168,76,0.06) 0%, transparent 60%), var(--black); }
+.cta-box { max-width: 700px; margin: 0 auto; text-align: center; padding: 4rem 2rem; border: 1px solid rgba(201,168,76,0.15); border-radius: 16px; background: rgba(201,168,76,0.03); }
+.cta-box h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 1rem; }
+.cta-box p { color: var(--gray); margin-bottom: 2rem; line-height: 1.7; }
+.contact-info { display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; margin-top: 2rem; }
+.contact-item { display: flex; align-items: center; gap: 0.6rem; color: var(--gray-light); font-size: 0.9rem; }
+.contact-item .icon { color: var(--gold); font-size: 1.1rem; }
+
+footer { padding: 2.5rem; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.8rem; color: var(--gray); }
+footer .logo { font-size: 1.2rem; margin-bottom: 0.5rem; }
+
+@keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeDown { from{opacity:0;transform:translateY(-20px)} to{opacity:1;transform:translateY(0)} }
+.fade-in { opacity: 0; transform: translateY(30px); transition: all 0.7s cubic-bezier(0.4,0,0.2,1); }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 900px) {
+  .pricing-grid { grid-template-columns: 1fr; max-width: 420px; }
+  .pricing-card.featured { transform: none; }
+  .pricing-card.featured:hover { transform: translateY(-8px); }
+  .domicile-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .process-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  .stats-bar { gap: 2rem; flex-wrap: wrap; }
+  .hero-buttons { flex-direction: column; align-items: center; }
+  .contact-info { flex-direction: column; align-items: center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">LUXE<span>CLEAN</span></div>
+  <ul class="nav-links">
+    <li><a href="#formules">Formules</a></li>
+    <li><a href="#domicile">À domicile</a></li>
+    <li><a href="#process">Processus</a></li>
+    <li><a href="#contact" class="nav-cta">Réserver</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-badge">Service à domicile ● Partout en France</div>
+  <h1>Votre intérieur auto<br><em>sublimé</em> à domicile</h1>
+  <p>Nous nous déplaçons chez vous pour redonner à l'habitacle de votre véhicule son éclat d'origine. Produits professionnels, résultat impeccable, zéro contrainte.</p>
+  <div class="hero-buttons">
+    <a href="#formules" class="btn-primary">Voir nos formules</a>
+    <a href="#contact" class="btn-secondary">Prendre rendez-vous</a>
+  </div>
+</section>
+
+<div class="stats-bar">
+  <div class="stat"><div class="stat-number">500+</div><div class="stat-label">Véhicules traités</div></div>
+  <div class="stat"><div class="stat-number">98%</div><div class="stat-label">Clients satisfaits</div></div>
+  <div class="stat"><div class="stat-number">100%</div><div class="stat-label">À domicile</div></div>
+  <div class="stat"><div class="stat-number">5★</div><div class="stat-label">Note Google</div></div>
+</div>
+
+<section id="formules">
+  <div class="section-header">
+    <span class="section-tag">Nos Formules</span>
+    <h2 class="section-title">3 niveaux de soin intérieur</h2>
+    <p class="section-subtitle">De l'entretien courant à la restauration complète, choisissez la formule adaptée à vos besoins.</p>
+  </div>
+  <div class="pricing-grid">
+
+    <div class="pricing-card fade-in">
+      <div class="card-icon">✦</div>
+      <div class="card-name">Essentiel</div>
+      <div class="card-desc">L'entretien régulier pour garder un intérieur propre et agréable au quotidien.</div>
+      <div class="card-price"><span class="amount">39</span><span class="currency">€</span></div>
+      <div class="card-price-note">Durée : environ 45 min</div>
+      <ul class="card-features">
+        <li><span class="check">✓</span> Aspiration complète (sièges, tapis, coffre)</li>
+        <li><span class="check">✓</span> Nettoyage des surfaces plastiques & tableau de bord</li>
+        <li><span class="check">✓</span> Vitres intérieures</li>
+        <li><span class="check">✓</span> Dépoussiérage des aérations & recoins</li>
+        <li><span class="check">✓</span> Parfum d'ambiance offert</li>
+      </ul>
+      <button class="card-btn outline">Réserver</button>
+    </div>
+
+    <div class="pricing-card featured fade-in">
+      <div class="card-badge">Populaire</div>
+      <div class="card-icon">◆</div>
+      <div class="card-name">Premium</div>
+      <div class="card-desc">Un nettoyage en profondeur pour retrouver un habitacle comme neuf.</div>
+      <div class="card-price"><span class="amount">79</span><span class="currency">€</span></div>
+      <div class="card-price-note">Durée : environ 1h30</div>
+      <ul class="card-features">
+        <li><span class="check">✓</span> Tout de la formule Essentiel</li>
+        <li><span class="check">✓</span> Shampouinage des sièges (tissu ou cuir)</li>
+        <li><span class="check">✓</span> Nettoyage vapeur des surfaces</li>
+        <li><span class="check">✓</span> Détachage des tapis & moquettes</li>
+        <li><span class="check">✓</span> Traitement anti-bactérien</li>
+        <li><span class="check">✓</span> Soin des plastiques (finition satinée)</li>
+      </ul>
+      <button class="card-btn primary">Réserver</button>
+    </div>
+
+    <div class="pricing-card fade-in">
+      <div class="card-icon">❖</div>
+      <div class="card-name">Prestige</div>
+      <div class="card-desc">La restauration intérieure complète, jusque dans les moindres détails.</div>
+      <div class="card-price"><span class="amount">149</span><span class="currency">€</span></div>
+      <div class="card-price-note">Durée : environ 3h</div>
+      <ul class="card-features">
+        <li><span class="check">✓</span> Tout de la formule Premium</li>
+        <li><span class="check">✓</span> Extraction en profondeur des sièges</li>
+        <li><span class="check">✓</span> Traitement & nutrition du cuir</li>
+        <li><span class="check">✓</span> Nettoyage du ciel de toit</li>
+        <li><span class="check">✓</span> Rénovation des plastiques ternis</li>
+        <li><span class="check">✓</span> Désodorisation complète à l'ozone</li>
+        <li><span class="check">✓</span> Protection céramique intérieure</li>
+      </ul>
+      <button class="card-btn outline">Réserver</button>
+    </div>
+
+  </div>
+</section>
+
+<section id="domicile" class="domicile-section">
+  <div class="domicile-grid">
+    <div class="domicile-visual fade-in">
+      <div class="domicile-icon">🏠</div>
+      <div class="domicile-visual-text">On vient chez vous.<br>Vous ne bougez pas.</div>
+    </div>
+    <div class="domicile-content fade-in">
+      <span class="section-tag">100% à domicile</span>
+      <h2>Votre voiture nettoyée<br>devant chez vous</h2>
+      <p>Plus besoin de vous déplacer ni de perdre du temps. Notre équipement professionnel tient dans notre véhicule utilitaire : nous intervenons directement sur votre parking, dans votre allée ou devant votre bureau.</p>
+      <ul class="domicile-perks">
+        <li><span class="dot"></span> Intervention à votre domicile ou lieu de travail</li>
+        <li><span class="dot"></span> Matériel autonome (eau, électricité embarqués)</li>
+        <li><span class="dot"></span> Aucune contrainte pour vous</li>
+        <li><span class="dot"></span> Créneaux du lundi au dimanche, matin & soir</li>
+        <li><span class="dot"></span> Déplacement offert dans un rayon de 20 km</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="section-header">
+    <span class="section-tag">Comment ça marche</span>
+    <h2 class="section-title">Simple comme 1, 2, 3</h2>
+    <p class="section-subtitle">Réservez, on s'occupe de tout.</p>
+  </div>
+  <div class="process-grid">
+    <div class="process-step fade-in">
+      <div class="step-number">01</div>
+      <div class="step-title">Réservation</div>
+      <div class="step-desc">Appelez ou envoyez un message WhatsApp. Choisissez votre formule et un créneau qui vous arrange.</div>
+    </div>
+    <div class="process-step fade-in">
+      <div class="step-number">02</div>
+      <div class="step-title">Intervention</div>
+      <div class="step-desc">Nous arrivons chez vous avec tout le matériel. Vous nous confiez les clés, c'est tout.</div>
+    </div>
+    <div class="process-step fade-in">
+      <div class="step-number">03</div>
+      <div class="step-title">Résultat</div>
+      <div class="step-desc">Récupérez votre voiture impeccable. Photos avant/après envoyées systématiquement.</div>
+    </div>
+  </div>
+</section>
+
+<section id="avantages">
+  <div class="section-header">
+    <span class="section-tag">Pourquoi nous choisir</span>
+    <h2 class="section-title">L'excellence dans chaque détail</h2>
+  </div>
+  <div class="advantages-grid">
+    <div class="advantage-card fade-in"><div class="advantage-icon">🚐</div><div class="advantage-title">100% mobile</div><div class="advantage-desc">Nous venons directement chez vous, au bureau ou n'importe où. Zéro déplacement de votre part.</div></div>
+    <div class="advantage-card fade-in"><div class="advantage-icon">🌿</div><div class="advantage-title">Produits écoresponsables</div><div class="advantage-desc">Des produits biodégradables et respectueux de l'environnement, sans compromis sur l'efficacité.</div></div>
+    <div class="advantage-card fade-in"><div class="advantage-icon">📸</div><div class="advantage-title">Photos avant / après</div><div class="advantage-desc">Transparence totale avec un rapport photo détaillé envoyé après chaque prestation.</div></div>
+    <div class="advantage-card fade-in"><div class="advantage-icon">⭐</div><div class="advantage-title">Satisfaction garantie</div><div class="advantage-desc">Si le résultat ne vous convient pas, nous repassons gratuitement pour une retouche.</div></div>
+    <div class="advantage-card fade-in"><div class="advantage-icon">🔬</div><div class="advantage-title">Matériel pro</div><div class="advantage-desc">Injecteurs-extracteurs, nettoyeurs vapeur, et produits de detailing haut de gamme.</div></div>
+    <div class="advantage-card fade-in"><div class="advantage-icon">🕐</div><div class="advantage-title">7j/7 — Flexible</div><div class="advantage-desc">Disponible tous les jours, y compris le soir et le week-end. On s'adapte à votre emploi du temps.</div></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="cta-box fade-in">
+    <span class="section-tag">Prêt à rouler propre ?</span>
+    <h2>Réservez votre créneau</h2>
+    <p>Contactez-nous pour offrir à votre véhicule le soin qu'il mérite. Devis gratuit, réponse sous 1h.</p>
+    <a href="tel:+33XXXXXXXXX" class="btn-primary">Appeler maintenant</a>
+    <div class="contact-info">
+      <div class="contact-item"><span class="icon">📞</span> 06 XX XX XX XX</div>
+      <div class="contact-item"><span class="icon">💬</span> WhatsApp disponible</div>
+      <div class="contact-item"><span class="icon">📧</span> contact@luxeclean.fr</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="logo">LUXE<span>CLEAN</span></div>
+  <p style="margin-top:0.5rem;">© 2026 LuxeClean Detailing — Tous droits réservés — SIRET : XXX XXX XXX XXXXX</p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 100);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
